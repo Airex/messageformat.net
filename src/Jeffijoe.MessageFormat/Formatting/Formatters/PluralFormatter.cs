@@ -155,6 +155,16 @@ namespace Jeffijoe.MessageFormat.Formatting.Formatters
                         return keyedBlock.BlockText;
                     }
                 }
+                
+                if (keyedBlock.Key.StartsWith("%"))
+                {
+                    var numberLiteral = Convert.ToInt32(keyedBlock.Key.Substring(1));
+                    
+                    if (n % numberLiteral == 0)
+                    {
+                        return keyedBlock.BlockText;
+                    }
+                }
 
                 if (keyedBlock.Key == pluralForm)
                 {
